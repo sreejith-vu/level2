@@ -1,10 +1,10 @@
 # level2
 GCP | Kubernetes | Kubeadm | CI/CD | Prometheus
 
-
+```
 gcloud compute instances create my-kube-master --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 2 --custom-memory 4096MB
 gcloud compute instances create my-kube-worker-01 --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 2 --custom-memory 4096MB
-
+```
 gcloud compute instances list
 
 apt-get update && apt-get install -y apt-transport-https curl 
