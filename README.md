@@ -35,5 +35,36 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 
 ```
 Troubleshooting
+```
 sudo kubeadm reset
 iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+```
+
+####################################################################################################
+
+2. Jenkins
+
+gcloud compute instances create jenkins-server --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 1 --custom-memory 1024MB
+gcloud compute ssh jenkins-server
+
+sudo apt update
+sudo apt install openjdk-8-jdk
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install jenkins
+systemctl status jenkins
+
+gcloud compute firewall-rules create firewall-for-jenkins --allow tcp:8080 --source-tags=jenkins-server --source-ranges=0.0.0.0/0 --description="Open Port 8080"
+
+
+http://35.238.43.16:8080
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Install suggested plugins
+Jenkins is Ready
+
+####################################################################################################
+
+3. kubectl create ns development
+
+####################################################################################################
