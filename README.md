@@ -43,7 +43,7 @@ iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
 ####################################################################################################
 
 2. Jenkins
-
+```
 gcloud compute instances create jenkins-server --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 1 --custom-memory 1024MB
 gcloud compute ssh jenkins-server
 
@@ -62,7 +62,7 @@ http://35.238.43.16:8080
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Install suggested plugins
 Jenkins is Ready
-
+```
 ####################################################################################################
 
 3. kubectl create ns development
