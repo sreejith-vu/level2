@@ -17,7 +17,7 @@ pipeline {
 
 		stage ('Removin Containers') {
 			steps {
-                		sh './Removing-containers.sh'
+                		sh './removing-containers.sh'
             		}
 		}
 

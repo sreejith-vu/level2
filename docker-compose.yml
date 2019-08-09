@@ -1,0 +1,8 @@
+version: '3'
+services:
+  backend-app-srv:
+    build: backend-app/.
+    image: "email-app:${TAG}"
+    container_name: backend-app
+    expose:
+      - "5000"

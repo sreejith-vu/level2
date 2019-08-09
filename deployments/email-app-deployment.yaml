@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  namespace: demo
+  labels:
+    app: web-app
+    platform: python
+spec:
+  replicas:
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: 087132542395.dkr.ecr.ap-south-1.amazonaws.com/kube-private-repo:email-app
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
