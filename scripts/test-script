@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "haiiiiiiiii"
-date
-#touch $(date +%F-%H-%M-%S).txt
