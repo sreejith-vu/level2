@@ -5,7 +5,7 @@ pipeline {
     stages {
 	stage ('Build Containers') {
       		steps {
-			sh '''./build-containers.sh'''
+			bash 'bash build-containers.sh'
             	}
 	}
 
