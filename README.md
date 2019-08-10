@@ -74,8 +74,10 @@ kubectl create ns development
 4. Deployed app using pipeline in jenkins
 ```
 Created Pipeline and verified its working fine.
-Logs are there in the files:
+Logs are there in the files which is placed in root directory:
 
+Jenkins-Pipeline-Helm.log
+Jenkins-Pipeline-without-Helm.log
 ```
 
 5. Configured Helm and Tiller and Installed Traefik 
