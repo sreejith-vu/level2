@@ -5,25 +5,25 @@ pipeline {
     stages {
 	stage ('Build Containers') {
       		steps {
-			bash 'sudo bash build-containers.sh'
+			sh './build-containers.sh'
             	}
 	}
 
 	stage ('Testing') {
 		steps {
-        		bash 'sudo bash test-containers.sh'
+        		sh './test-containers.sh'
        		}
 	}
 
 	stage ('Removin Containers') {
 		steps {
-                	bash 'sudo bash removing-containers.sh'
+                	sh './removing-containers.sh'
             	}
 	}
 
 	stage ('Deploying to Kubernetes Cluster') {
             	steps {
-        		bash 'sudo bash deploy-containers.sh'
+        		sh './deploy-containers.sh'
              	}
 	}
 
