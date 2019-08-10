@@ -11,19 +11,19 @@ pipeline {
 
 	stage ('Testing') {
 		steps {
-        		bash 'bash test-containers.sh'
+        		bash 'sudo bash test-containers.sh'
        		}
 	}
 
 	stage ('Removin Containers') {
 		steps {
-                	bash 'bash removing-containers.sh'
+                	bash 'sudo bash removing-containers.sh'
             	}
 	}
 
 	stage ('Deploying to Kubernetes Cluster') {
             	steps {
-        		bash 'bash deploy-containers.sh'
+        		bash 'sudo bash deploy-containers.sh'
              	}
 	}
 
