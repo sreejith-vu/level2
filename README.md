@@ -37,7 +37,7 @@ sudo kubeadm reset
 iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
 ```
 
-2. Creating VM for Jenkins and Setting up Environment
+## 2. Creating VM for Jenkins and Setting up Environment
 ```
 gcloud compute instances create jenkins-server --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 1 --custom-memory 1024MB
 
@@ -64,12 +64,12 @@ Install suggested plugins
 Jenkins is Ready
 ```
 
-3. Created development namespace
+## 3. Created development namespace
 ```
 kubectl create ns development
 ```
 
-4. Deployed app using pipeline in jenkins
+## 4. Deployed app using pipeline in jenkins
 ```
 Created Pipeline and verified its working fine.
 Logs are there in the files which is placed in root directory:
@@ -78,7 +78,7 @@ Jenkins-Pipeline-Helm.log
 Jenkins-Pipeline-without-Helm.log
 ```
 
-5. Configured Helm and Tiller and Installed Traefik 
+## 5. Configured Helm and Tiller and Installed Traefik 
 ```
 kubectl -n kube-system create serviceaccount tiller
 kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
@@ -88,7 +88,7 @@ helm install stable/traefik --name my-traefik --namespace kube-system
 kubectl edit svc my-traefik --namespace kube-system
 ```
 
-6. Configured Helm to deploy from CI server to Cluster
+## 6. Configured Helm to deploy from CI server to Cluster
 Created my helm repo in root directory
 ```
 helm create my-app
@@ -102,12 +102,12 @@ helm install  --name my-email-app-deploy my-app/ --namespace development --dry-r
 helm upgrade my-email-app-deploy my-app/ --namespace development
 ```
 
-7. Created name space monitoring
+## 7. Created name space monitoring
 ```
 kubectl create ns monitoring
 ```
 
-8. Deploying prometheus in monitoring namespace
+## 8. Deploying prometheus in monitoring namespace
 ```
 helm upgrade prometheus charts-master/stable/prometheus --namespace monitoring
 
@@ -120,10 +120,10 @@ kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-pass
 kubectl patch svc "grafana" --namespace "monitoring" -p '{"spec": {"type": "LoadBalancer"}}'
 ```
  
-9. visualize grafana
+## 9. visualize grafana
 
 
-10. EFK
+## 10. EFK
 ```
 helm repo add akomljen-charts https://raw.githubusercontent.com/komljen/helm-charts/master/charts/
 
