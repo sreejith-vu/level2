@@ -1,6 +1,6 @@
 FROM alpine
 MAINTAINER Sreejith VU (sreejithvu@outlook.com)
-RUN apk add --update python py-pip && apk add bash
+RUN apk add --update python py-pip && apk add bash curl
 RUN pip install flask
 RUN pip install requests
 COPY ./MANAGE_EMAIL_BLACKLISTS/ /home/deployment/
