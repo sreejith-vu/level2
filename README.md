@@ -1,6 +1,6 @@
 # GCP | Kubernetes | Kubeadm | Jenkins | CI/CD | Prometheus | Grafana | EFK | Helm | Traefik
 
-Creating Kubernete Cluster - Master and Worker Node
+## 1. Creating Kubernete Cluster - Master and Worker Node
 ```
 gcloud compute instances create my-kube-master --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 2 --custom-memory 4096MB
 gcloud compute instances create my-kube-worker-01 --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 2 --custom-memory 4096MB
@@ -111,19 +111,19 @@ kubectl create ns monitoring
 ```
 helm upgrade prometheus charts-master/stable/prometheus --namespace monitoring
 
-kubectl apply -f grafana-config.yaml
+kubectl apply -f grafana/config.yaml
 
-helm install stable/grafana -f grafana-values.yaml --namespace monitoring --name grafana
+helm install stable/grafana -f grafana/values.yaml --namespace monitoring --name grafana
 
 kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 
 kubectl patch svc "grafana" --namespace "monitoring" -p '{"spec": {"type": "LoadBalancer"}}'
 ```
  
-9 visualize grafana
+9. visualize grafana
 
 
-10 EFK
+10. EFK
 ```
 helm repo add akomljen-charts https://raw.githubusercontent.com/komljen/helm-charts/master/charts/
 
