@@ -1,9 +1,9 @@
 pipeline {
-    agent { backend-app/dockerfile true }
+    agent any
     stages {
         stage('Test') {
             steps {
-                sh 'python --version'
+                sh './build-containers.sh'
             }
         }
     }
