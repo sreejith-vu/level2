@@ -1,2 +1,2 @@
 #!/bin/bash
-kubectl apply -f deployment/email-app-deployment.yaml -n development
+kubectl apply -f deployments/email-app-deployment.yaml -n development
