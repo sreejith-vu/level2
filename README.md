@@ -62,6 +62,10 @@ http://35.238.43.16:8080
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Install suggested plugins
 Jenkins is Ready
+
+Create pipeline and verified the working.
+File - Jenkinsfile
+
 ```
 ####################################################################################################
 
