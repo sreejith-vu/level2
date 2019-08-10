@@ -1,5 +1,7 @@
 #!/bin/bash
 
-docker-compose rm -f
-docker-compose pull
-docker-compose up --build -d
+docker-compose down
+
+docker-compose build --no-cache
+
+docker-compose up -d
