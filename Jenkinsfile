@@ -21,12 +21,6 @@ pipeline {
             	}
 	}
 
-	stage ('Deploying to Kubernetes Cluster') {
-            	steps {
-        		sh 'bash ./deploy-containers.sh'
-             	}
-	}
-
     }
 	
 }
