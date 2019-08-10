@@ -7,7 +7,7 @@ gcloud compute instances create my-kube-worker-01 --image-family ubuntu-1804-lts
 
 gcloud compute instances list
 ```
-Installing requirements in both Instances
+#### Installing requirements in both Instances
 ```
 apt-get update && apt-get install -y apt-transport-https curl 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -31,7 +31,7 @@ kubeadm join 10.128.0.12:6443 --token d3b8pe.0kefb6irf3ay7hhu --discovery-token-
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
-Troubleshooting - In between ran into some issues so done reset on clusters
+#### Troubleshooting - In between ran into some issues so done reset on clusters
 ```
 sudo kubeadm reset
 iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
@@ -52,11 +52,12 @@ sudo apt install jenkins
 systemctl status jenkins
 ```
 
-Enabling port for Jenkins
+#### Enabling port for Jenkins
 ```
 gcloud compute firewall-rules create firewall-for-jenkins --allow tcp:8080 --source-tags=jenkins-server --source-ranges=0.0.0.0/0 --description="Open Port 8080"
 ````
-Successfully configured Jenkins
+
+#### Successfully configured Jenkins
 ```
 http://35.238.43.16:8080
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -70,10 +71,9 @@ kubectl create ns development
 ```
 
 ## 4. Deployed app using pipeline in jenkins
+#### Created Pipeline and verified its working fine.
+#### Logs are there in the files which is placed in root directory
 ```
-Created Pipeline and verified its working fine.
-Logs are there in the files which is placed in root directory:
-
 Jenkins-Pipeline-Helm.log
 Jenkins-Pipeline-without-Helm.log
 ```
@@ -89,7 +89,7 @@ kubectl edit svc my-traefik --namespace kube-system
 ```
 
 ## 6. Configured Helm to deploy from CI server to Cluster
-Created my helm repo in root directory
+#### Created my helm repo in root directory
 ```
 helm create my-app
 
@@ -120,7 +120,7 @@ kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-pass
 kubectl patch svc "grafana" --namespace "monitoring" -p '{"spec": {"type": "LoadBalancer"}}'
 ```
  
-## 9. visualize grafana
+## 9. Visualizing grafana
 
 
 ## 10. EFK
