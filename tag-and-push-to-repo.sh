@@ -7,3 +7,8 @@ DOCKERHUB_USER=$(cat .env |grep DOCKERHUB_USER |awk -F= '{print $NF}')
 
 docker tag $BACKEND_APP:$TAG $DOCKERHUB_USER/$DOCKER_REPO:$TAG
 docker push $DOCKERHUB_USER/$DOCKER_REPO:$TAG
+
+
+sed -i "s/TAG/$TAG/g" deployments/email-app-deployment.yaml
+sed -i "s/DOCKER_REPO/$DOCKER_REPO/g" deployments/email-app-deployment.yaml
+sed -i "s/DOCKERHUB_USER/$DOCKERHUB_USER/g" deployments/email-app-deployment.yaml
