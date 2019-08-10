@@ -1,4 +1,4 @@
-# GCP | Kubernetes | Kubeadm | Jenkins | CI/CD | Prometheus | Grafana | EFK
+# GCP | Kubernetes | Kubeadm | Jenkins | CI/CD | Prometheus | Grafana | EFK | Helm | Traefik
 
 Creating Kubernete Cluster - Master and Worker Node
 ```
