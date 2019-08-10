@@ -15,6 +15,12 @@ pipeline {
        		}
 	}
 
+	stage ('Pushing to Repo and update Kubernetes deployment file') {
+		steps {
+                	sh 'bash ./tag-and-push-to-repo.sh'
+            	}
+	}	    
+
 	stage ('Removin Containers') {
 		steps {
                 	sh 'bash ./removing-containers.sh'
