@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    stages {
-        stage('Test') {
-            steps {
-                sh './build-containers.sh'
-            }
-        }
+    
+    node {
+    checkout scm
+    def emailappimage = docker.build("email-app-image", "./backend-app/Dockcerfile") 
+
     }
+
 }
