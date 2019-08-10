@@ -6,7 +6,7 @@ pipeline {
       		steps {
 			script
 			{
-                		docker.build("MyProject", "-f ./backend-app/Dockerfile .")            	
+                		docker.build("test-image:latest", "-f ./backend-app/Dockerfile .")            	
 			}
             }
 	    }
