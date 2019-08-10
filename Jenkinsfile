@@ -3,7 +3,8 @@
 pipeline {
   agent any
     stages {
-	stage ('Build Containers') {
+	    
+	stage ('Building Containers') {
       		steps {
 			sh 'bash ./build-containers.sh'
             	}
@@ -15,18 +16,24 @@ pipeline {
        		}
 	}
 
-	stage ('Pushing to Repo and update Kubernetes deployment file') {
+	stage ('Pushing to Docker HUB Registry and updating Kube YAML files') {
 		steps {
                 	sh 'bash ./tag-and-push-to-repo.sh'
             	}
 	}	    
 
-	stage ('Removin Containers') {
+	stage ('Cleaning up temporary Containers') {
 		steps {
                 	sh 'bash ./removing-containers.sh'
             	}
 	}
-
+	    
+	stage ('Deploying to Kubernetes Cluster') {
+            	steps {
+        		bash 'bash ./deploy-containers.sh'
+             	}
+	}
+	    
     }
 	
 }
