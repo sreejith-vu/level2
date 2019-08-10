@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: 087132542395.dkr.ecr.ap-south-1.amazonaws.com/kube-private-repo:email-app
+        image: DOCKERHUB_USER/DOCKER_REPO:TAG
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
