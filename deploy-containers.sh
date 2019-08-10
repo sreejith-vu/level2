@@ -1,2 +1,2 @@
 #!/bin/bash
-kubectl apply -f guestbook/redis-master-deployment.yaml -n staging
+kubectl apply -f deployment/email-app-deployment.yaml -n development
