@@ -1,2 +1,3 @@
 #!/bin/bash
-kubectl apply -f deployments/email-app-deployment.yaml -n development
+
+helm upgrade  --name my-email-app-deploy my-app/ --namespace development
