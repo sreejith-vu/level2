@@ -1,13 +1,11 @@
 pipeline {
     agent any
    
-
-    dir("MySolution")
-    {
-        script
-        {
-            docker.build("MyProject", "-f ./backend-app/Dockerfile .")
-        }
+    stages {
+	    stage ('Build Containers') {
+      		steps {
+                docker.build("MyProject", "-f ./backend-app/Dockerfile .")            	
+            }
+	    }
     }
-
 }
