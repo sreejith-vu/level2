@@ -1,5 +1,4 @@
-# level2
-GCP | Kubernetes | Kubeadm | Jenkins | CI/CD | Prometheus | Grafana
+# GCP | Kubernetes | Kubeadm | Jenkins | CI/CD | Prometheus | Grafana
 
 Creating Kubernete Cluster - Master and Worker Node
 ```
