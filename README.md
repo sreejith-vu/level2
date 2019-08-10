@@ -67,10 +67,77 @@ Create pipeline and verified the working.
 File - Jenkinsfile
 
 ```
+```
 ####################################################################################################
 
-3. kubectl create ns development
+3. Created development namespace
+
+kubectl create ns development
 
 ####################################################################################################
+
+
+4. Deployed app using pipeline in jenkins
+
+####################################################################################################
+
+5. Configured Helm
+
+kubectl -n kube-system create serviceaccount tiller
+kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller
+kubectl get pods --namespace kube-system
+
+sample
+
+helm install stable/kubernetes-dashboard --name dashboard-demo
+helm upgrade dashboard-demo stable/kubernetes-dashboard --set fullnameOverride="dashboard"
+helm rollback dashboard-demo 1
+helm delete dashboard-demo
+helm list --deleted
+helm delete dashboard-demo --purge
+
+Create MY Helm
+helm create my-app
+cp deployments/web-domain-ingress.yaml my-app/templates/ingress.yaml
+cp deployments/email-app-deployment.yaml my-app/templates/deployment.yaml
+cp deployments/email-app-service.yaml my-app/templates/service.yaml
+
+
+helm install stable/traefik --name my-traefik --namespace kube-system
+
+kubectl edit svc my-traefik --namespace kube-system
+
+
+helm install  --name my-email-app-deploy my-app/ --namespace development --dry-run --debug
+####################################################################################################
+
+6. Configured Helm to deploy from CI server to Cluster
+
+####################################################################################################
+
+7. Created name space monitoring
+
+kubectl create ns monitoring
+
+####################################################################################################
+
+
+8. Deploying prometheus in monitoring namespace
+
+helm upgrade prometheus charts-master/stable/prometheus --namespace monitoring
+kubectl apply -f grafana-config.yaml
+
+ helm install stable/grafana -f monitoring/grafana/values.yml --namespace monitoring --name grafana
+ helm install stable/grafana -f grafana-values.yaml --namespace monitoring --name grafana
+
+kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+
+
+kubectl patch svc "grafana" --namespace "monitoring" -p '{"spec": {"type": "LoadBalancer"}}'
+ 
+####################################################################################################
+```
 
 
