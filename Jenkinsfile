@@ -5,7 +5,7 @@ pipeline {
     stages {
 	stage ('Build Containers') {
       		steps {
-			bash 'bash build-containers.sh'
+			bash 'sudo bash build-containers.sh'
             	}
 	}
 
