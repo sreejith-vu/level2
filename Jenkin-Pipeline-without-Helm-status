@@ -1,0 +1,215 @@
+SuccessConsole Output
+
+Started by user admin-sree
+Obtained Jenkinsfile from git https://github.com/sreejith-vu/level2.git
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/3rdPipelineProject
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/sreejith-vu/level2.git # timeout=10
+Fetching upstream changes from https://github.com/sreejith-vu/level2.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/sreejith-vu/level2.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 84cc9acb4cc177bc46ad876ae24b9763db7ab3a9 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 84cc9acb4cc177bc46ad876ae24b9763db7ab3a9
+Commit message: "Update web-domain-ingress.yaml"
+ > git rev-list --no-walk 0dd9c7a8712c2d32f70c3f57b081ebca8033396c # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Building Containers)
+[Pipeline] sh
++ bash ./build-containers.sh
+Removing network 3rdpipelineproject_default
+Network 3rdpipelineproject_default not found.
+Building backend-app-srv
+Step 1/9 : FROM alpine
+ ---> b7b28af77ffe
+Step 2/9 : MAINTAINER Sreejith VU (sreejithvu@outlook.com)
+
+ ---> Running in 5636ea3c735c
+Removing intermediate container 5636ea3c735c
+ ---> 99d40eaecff6
+Step 3/9 : RUN apk add --update python py-pip && apk add bash curl
+ ---> Running in 57c194489e23
+
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/community/x86_64/APKINDEX.tar.gz
+
+(1/12) Installing libbz2 (1.0.6-r7)
+(2/12) Installing expat (2.2.7-r0)
+(3/12) Installing libffi (3.2.1-r6)
+(4/12) Installing gdbm (1.13-r1)
+(5/12) Installing ncurses-terminfo-base (6.1_p20190518-r0)
+(6/12) Installing ncurses-terminfo (6.1_p20190518-r0)
+(7/12) Installing ncurses-libs (6.1_p20190518-r0)
+(8/12) Installing readline (8.0.0-r0)
+(9/12) Installing sqlite-libs (3.28.0-r0)
+(10/12) Installing python2 (2.7.16-r1)
+(11/12) Installing py-setuptools (40.8.0-r1)
+(12/12) Installing py2-pip (18.1-r0)
+
+Executing busybox-1.30.1-r2.trigger
+OK: 65 MiB in 26 packages
+(1/5) Installing bash (5.0.0-r0)
+Executing bash-5.0.0-r0.post-install
+(2/5) Installing ca-certificates (20190108-r0)
+(3/5) Installing nghttp2-libs (1.38.0-r0)
+(4/5) Installing libcurl (7.65.1-r0)
+(5/5) Installing curl (7.65.1-r0)
+Executing busybox-1.30.1-r2.trigger
+Executing ca-certificates-20190108-r0.trigger
+OK: 68 MiB in 31 packages
+
+Removing intermediate container 57c194489e23
+ ---> 7263be92b487
+Step 4/9 : RUN pip install flask
+ ---> Running in 3ad17bce2b39
+
+Collecting flask
+  Downloading https://files.pythonhosted.org/packages/9b/93/628509b8d5dc749656a9641f4caf13540e2cdec85276964ff8f43bbb1d3b/Flask-1.1.1-py2.py3-none-any.whl (94kB)
+Collecting Jinja2>=2.10.1 (from flask)
+  Downloading https://files.pythonhosted.org/packages/1d/e7/fd8b501e7a6dfe492a433deb7b9d833d39ca74916fa8bc63dd1a4947a671/Jinja2-2.10.1-py2.py3-none-any.whl (124kB)
+Collecting click>=5.1 (from flask)
+  Downloading https://files.pythonhosted.org/packages/fa/37/45185cb5abbc30d7257104c434fe0b07e5a195a6847506c074527aa599ec/Click-7.0-py2.py3-none-any.whl (81kB)
+Collecting Werkzeug>=0.15 (from flask)
+  Downloading https://files.pythonhosted.org/packages/d1/ab/d3bed6b92042622d24decc7aadc8877badf18aeca1571045840ad4956d3f/Werkzeug-0.15.5-py2.py3-none-any.whl (328kB)
+
+Collecting itsdangerous>=0.24 (from flask)
+  Downloading https://files.pythonhosted.org/packages/76/ae/44b03b253d6fade317f32c24d100b3b35c2239807046a4c953c7b89fa49e/itsdangerous-1.1.0-py2.py3-none-any.whl
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.10.1->flask)
+  Downloading https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
+Installing collected packages: MarkupSafe, Jinja2, click, Werkzeug, itsdangerous, flask
+  Running setup.py install for MarkupSafe: started
+    Running setup.py install for MarkupSafe: finished with status 'done'
+
+Successfully installed Jinja2-2.10.1 MarkupSafe-1.1.1 Werkzeug-0.15.5 click-7.0 flask-1.1.1 itsdangerous-1.1.0
+
+Removing intermediate container 3ad17bce2b39
+ ---> 0d79a1d24a46
+Step 5/9 : RUN pip install requests
+ ---> Running in 082e848c7bdb
+
+Collecting requests
+  Downloading https://files.pythonhosted.org/packages/51/bd/23c926cd341ea6b7dd0b2a00aba99ae0f828be89d72b2190f27c11d4b7fb/requests-2.22.0-py2.py3-none-any.whl (57kB)
+Collecting chardet<3.1.0,>=3.0.2 (from requests)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+Collecting idna<2.9,>=2.5 (from requests)
+  Downloading https://files.pythonhosted.org/packages/14/2c/cd551d81dbe15200be1cf41cd03869a46fe7226e7450af7a6545bfc474c9/idna-2.8-py2.py3-none-any.whl (58kB)
+Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 (from requests)
+  Downloading https://files.pythonhosted.org/packages/e6/60/247f23a7121ae632d62811ba7f273d0e58972d75e58a94d329d51550a47d/urllib3-1.25.3-py2.py3-none-any.whl (150kB)
+Collecting certifi>=2017.4.17 (from requests)
+  Downloading https://files.pythonhosted.org/packages/69/1b/b853c7a9d4f6a6d00749e94eb6f3a041e342a885b87340b79c1ef73e3a78/certifi-2019.6.16-py2.py3-none-any.whl (157kB)
+Installing collected packages: chardet, idna, urllib3, certifi, requests
+
+Successfully installed certifi-2019.6.16 chardet-3.0.4 idna-2.8 requests-2.22.0 urllib3-1.25.3
+
+Removing intermediate container 082e848c7bdb
+ ---> 5205eef1a9ab
+Step 6/9 : COPY ./MANAGE_EMAIL_BLACKLISTS/ /home/deployment/
+ ---> f6a3542b63a8
+Step 7/9 : WORKDIR /home/deployment
+ ---> Running in 6e5e85d5acb1
+Removing intermediate container 6e5e85d5acb1
+ ---> 4107eb9c3f4b
+Step 8/9 : EXPOSE 5000
+ ---> Running in 2ea4e5caf13c
+Removing intermediate container 2ea4e5caf13c
+ ---> 632f883e3477
+Step 9/9 : CMD python ./manage_email_blacklists.py
+ ---> Running in 5459024ae87f
+Removing intermediate container 5459024ae87f
+ ---> 5a0618767bef
+Successfully built 5a0618767bef
+Successfully tagged email-app:v1.5
+
+Creating network "3rdpipelineproject_default" with the default driver
+Creating backend-app ... 
+
+[1A[2K
+Creating backend-app ... [32mdone[0m
+[1B
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Testing)
+[Pipeline] sh
++ bash ./test-containers.sh
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0    90    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Pushing to Docker HUB Registry and updating Kube YAML files)
+[Pipeline] sh
++ bash ./tag-and-push-to-repo.sh
+
+The push refers to repository [docker.io/sreejithvu/kube-public-repo]
+2611081c51e6: Preparing
+2ec53879f3bb: Preparing
+491a1ce0f9a4: Preparing
+cfc6a5394249: Preparing
+1bfeebd65323: Preparing
+1bfeebd65323: Layer already exists
+
+2611081c51e6: Pushed
+
+491a1ce0f9a4: Pushed
+
+2ec53879f3bb: Pushed
+
+cfc6a5394249: Pushed
+
+v1.5: digest: sha256:4630b4945b1d0a3fa4abe88ed81818254ae2cdb6b475c0e5b2159255a16e0f5b size: 1370
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Cleaning up temporary Containers)
+[Pipeline] sh
++ bash ./removing-containers.sh
+
+Stopping backend-app ... 
+
+[1A[2K
+Stopping backend-app ... [32mdone[0m
+[1BRemoving backend-app ... 
+[1A[2K
+Removing backend-app ... [32mdone[0m
+[1BRemoving network 3rdpipelineproject_default
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploying to Kubernetes Cluster)
+[Pipeline] sh
+
++ bash ./deploy-containers.sh
+
+deployment.apps/web-app created
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+Finished: SUCCESS
