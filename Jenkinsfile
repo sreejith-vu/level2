@@ -30,7 +30,7 @@ pipeline {
 	    
 	stage ('Deploying to Kubernetes Cluster') {
             	steps {
-        		bash 'bash ./deploy-containers.sh'
+        		sh 'bash ./deploy-containers.sh'
              	}
 	}
 	    
