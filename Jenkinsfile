@@ -3,7 +3,7 @@ pipeline {
     
     node {
     checkout scm
-    def emailappimage = docker.build("email-app-image", "./backend-app/Dockcerfile") 
+    def emailappimage = docker.build("email-app-image", "./backend-app") 
 
     }
 
