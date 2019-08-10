@@ -39,8 +39,6 @@ sudo kubeadm reset
 iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
 ```
 
-####################################################################################################
-
 2. Creating VM for Jenkins and Setting up Environment
 ```
 gcloud compute instances create jenkins-server --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 1 --custom-memory 1024MB
