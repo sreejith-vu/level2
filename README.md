@@ -1,5 +1,5 @@
 # level2
-GCP | Kubernetes | Kubeadm | CI/CD | Prometheus
+GCP | Kubernetes | Kubeadm | Jenkins | CI/CD | Prometheus | Grafana
 
 ```
 gcloud compute instances create my-kube-master --image-family ubuntu-1804-lts --image-project gce-uefi-images --custom-cpu 2 --custom-memory 4096MB
