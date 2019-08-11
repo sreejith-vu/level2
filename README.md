@@ -73,6 +73,8 @@ kubectl create ns development
 ## 4. Deployed app using pipeline in jenkins
 #### Created Pipeline and verified its working fine.
 #### Logs are there in the files which is placed in root directory
+
+I have application developed by myself for deployment in Jenkins.
 ```
 Jenkins-Pipeline-Helm.log
 Jenkins-Pipeline-without-Helm.log
