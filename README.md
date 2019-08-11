@@ -128,6 +128,10 @@ gcloud compute firewall-rules create firewall-grafana --allow tcp:30024 --source
 
 ![Grafana Dashboard](/snapshots/GrafanaDashboard.png)
 
+![Grafana Dashboard2](/snapshots/GrafanaDashboard-Node-1.png)
+
+![Grafana Dashboard3](/snapshots/GrafanaDashboard-Node-2.png)
+
 ## 10. EFK
 ```
 helm repo add akomljen-charts https://raw.githubusercontent.com/komljen/helm-charts/master/charts/
