@@ -63,6 +63,12 @@ http://35.238.43.16:8080
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Install suggested plugins
 Jenkins is Ready
+
+Configured Pipeline with BlueOcean.
+
+![Jenkins Pipeline](/snapshots/jenkins-pipeline.gif)
+
+
 ```
 
 ## 3. Created development namespace
@@ -140,5 +146,7 @@ helm install --name es-operator --namespace monitoring akomljen-charts/elasticse
   
 helm install --name efk --namespace monitoring akomljen-charts/efk
 ```
+Edit Kibana service and change to NodePort to get the UI.
 
+Find the wrapper script - wrapper-script.sh in root directory.
 
