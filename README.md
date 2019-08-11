@@ -118,10 +118,15 @@ helm install stable/grafana -f grafana/values.yaml --namespace monitoring --name
 kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 
 kubectl patch svc "grafana" --namespace "monitoring" -p '{"spec": {"type": "LoadBalancer"}}'
+or 
+kubectl edit svc grafana -n monitoring
+And update ClusterIP to NodePort
+gcloud compute firewall-rules create firewall-grafana --allow tcp:30024 --source-tags=my-kube-master --source-ranges=0.0.0.0/0 --description="Open Port 30024 for grafana"
 ```
  
-## 9. Visualizing grafana
+## 9. Visualizing Grafana Dashboard
 
+![Grafana Dashboard](/snapshots/GrafanaDashboard.png)
 
 ## 10. EFK
 ```
