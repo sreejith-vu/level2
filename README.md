@@ -63,12 +63,6 @@ http://35.238.43.16:8080
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Install suggested plugins
 Jenkins is Ready
-
-Configured Pipeline with BlueOcean.
-
-![Jenkins Pipeline](/snapshots/jenkins-pipeline.gif)
-
-
 ```
 
 ## 3. Created development namespace
@@ -83,6 +77,10 @@ kubectl create ns development
 Jenkins-Pipeline-Helm.log
 Jenkins-Pipeline-without-Helm.log
 ```
+## Demonstrate - Pipeline with BlueOcean.
+
+![Jenkins Pipeline](/snapshots/jenkins-pipeline.gif)
+
 
 ## 5. Configured Helm and Tiller and Installed Traefik 
 ```
